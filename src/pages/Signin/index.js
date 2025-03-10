@@ -32,7 +32,7 @@ const Signin = () => {
 
     return(
         <C.Container>
-            <C.Label>Bici Friends</C.Label>
+            <C.Label>Bici Friends 🚲</C.Label>
             <C.Content>
                 <Input
                     type="email"
@@ -46,16 +46,16 @@ const Signin = () => {
                     value={senha}
                     onChange={(e) => [setSenha(e.target.value), setError("")]}
                 />
-            <C.labelError>{error}</C.labelError>
-            <Button Text="Entrar" onClick={handleLogin} />
+                <C.labelError>{error}</C.labelError>
+                <Button Text="Entrar" onClick={handleLogin}/>
                 <C.LabelSignin>
                     Sem conta?
                     <C.Strong>
-                         <Link to ="/signup">&nbsp;Vem pedalar com a Gente!</Link>
+                        <Link to="/signup">&nbsp;Vem pedalar com a Gente!</Link>
                     </C.Strong>
                 </C.LabelSignin>
-        </C.Content>
-    </C.Container>
+            </C.Content>
+        </C.Container>
     );
 };
 

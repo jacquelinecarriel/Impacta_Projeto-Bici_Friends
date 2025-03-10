@@ -39,11 +39,11 @@ const Signup = () => {
 
     return(
         <C.Container>
-            <C.Label>Sistema de Login</C.Label>
+            <C.Label>Bici Friends 🚲 </C.Label>
             <C.Content>
                 <Input
                     type="email"
-                    placeholder="Digite seu E-mail"
+                    placeholder="Digite seu E-mail Ciclista"
                     value={email}
                     onChange={(e) => [setEmail(e.target.value), setError("")]}
                 />
@@ -64,7 +64,7 @@ const Signup = () => {
                 <C.LabelSignin>
                     Ja tem uma conta?
                         <C.Strong>
-                            <Link to="/">%nbsp;Entre</Link>
+                            <Link to="/">&nbsp;Entre</Link>
                         </C.Strong>
                 </C.LabelSignin>
         </C.Content>

@@ -16,7 +16,7 @@ export const Content = styled.div`
     flex-direction: column;
     widht: 100%;
     box-shadow: 0 1px 2px #0003;
-    background-color: white;
+    background-color: #99ffcc;
     max-width: 350px;
     padding: 20px;
     border-radius: 5px;
@@ -35,7 +35,7 @@ export const LabelSignin = styled.label`
 
 export const labelError = styled.label`
     font-sized: 14px;
-    color: red;
+    color: #009999;
 `;
 
 export const Strong = styled.strong`
