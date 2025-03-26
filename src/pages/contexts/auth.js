@@ -7,52 +7,55 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const userToken = localStorage.getItem("user_token");
-        const usersStorage = localStorage.getItem("users_db");
+        const usersStorage = localStorage.getItem("users_bd");
 
-        if(userToken && userToken) {
+        if (userToken && usersStorage) {
             const hasUser = JSON.parse(usersStorage)?.filter(
                 (user) => user.email === JSON.parse(userToken).email
             );
+
             if (hasUser) setUser(hasUser[0]);
         }
     }, []);
 
-    const signin = (email, passwrod) => {
-        const userStorage = JSON.parse(localStorage.getItem("users_db"))
+    const signin = (email, password) => {
+        const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
 
-        const hasUser = userStorage?.filter((user) => user.email === email);
+        const hasUser = usersStorage?.filter((user) => user.email === email);
 
-        if(hasUser?.length) {
-                if (hasUser[0].email === email && hasUser[0].password === passwrod) {
-                    const token = Math.random().toString(36).substring(2);
-                    localStorage.setItem("user_token", JSON.stringify({email, token}));
-                    setUser({email, passwrod});
-                    return;
-                } else {
-                    return "E-mail ou senha incorretos";
-                }
+        if (hasUser?.length) {
+            if (hasUser[0].email === email && hasUser[0].password === password) {
+                const token = Math.random().toString(36).substring(2);
+                localStorage.setItem("user_token", JSON.stringify({ email, token }));
+                setUser({ email, password });
+                return;
             } else {
-            return  "Usuario não cadastrado";
+                return "E-mail ou senha incorretos";
+            }
+        } else {
+            return "Usuário não cadastrado";
         }
     };
 
     const signup = (email, password) => {
-        const  usersStorage = JSON.parse(localStorage.getItem("users_db"))
+        const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
 
-        const  hasUser = usersStorage?.filter((user) => user.email === email);
+        const hasUser = usersStorage?.filter((user) => user.email === email);
 
         if (hasUser?.length) {
-            return "Já tem uma conta com esse email";
+            return "Já tem uma conta com esse E-mail";
         }
+
         let newUser;
 
-        if(usersStorage) {
-            newUser = [...usersStorage, {email, password}];
+        if (usersStorage) {
+            newUser = [...usersStorage, { email, password }];
         } else {
-            newUser = [{ email, password}];
+            newUser = [{ email, password }];
         }
 
-        localStorage.setItem("users_db", JSON.stringify(newUser));
+        localStorage.setItem("users_bd", JSON.stringify(newUser));
+
         return;
     };
 
@@ -62,10 +65,10 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-    <AuthContext.Provider
-        value={{ user, signed: !!user, signin, signup, signout }}
-    >
-      {children}
-    </AuthContext.Provider>
+        <AuthContext.Provider
+            value={{ user, signed: !!user, signin, signup, signout }}
+        >
+            {children}
+        </AuthContext.Provider>
     );
 };
