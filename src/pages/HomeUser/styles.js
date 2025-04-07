@@ -1,30 +1,41 @@
 import styled from "styled-components";
 
-
-export const Container = styled.div`
+export const ContainerWhite = styled.div`
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: column;
-    height: 100vh;
-    gap: 20px;
+    width: 50%;
+    background-color: #fffff;
 `;
-export const LabelGroup = styled.label`
-    font-size: 16px;
-    color: #676767;
+
+export const ContainerBlue = styled.div`
+    background-color: #00b8e6;
+    position: static;
+    left: 10%;
 `;
+
 
 export const Content = styled.div`
-    gap: 15px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    widht: 100%;
-    box-shadow: 0 1px 2px #0003;
-    background-color: #ffffff;
-    max-width: 350px;
-    padding: 20px;
-    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 `;
+
+export const Img = styled.div`
+    float: left;
+    width: 33.33%;
+    padding: 70px;
+`;
+
+export const Top = styled.div`
+    //left: 100%;
+    transform: translate(650%, 5%);
+    text-align: center;
+
+    //width: 33.33%;
+    //padding: 70px;
+`;
+
 
 export const Title = styled.h2``;
