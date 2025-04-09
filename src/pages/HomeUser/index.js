@@ -4,6 +4,7 @@ import home from "../Home";
 import {useNavigate} from "react-router-dom";
 
 import maps from "../Maps";
+import groups from "../Groups";
 import {ContainerWhite, Content, LabelGroup} from "./styles";
 import ButtonHome from "../../components/ButtonHome";
 import img from "./images/home.png";
@@ -23,7 +24,7 @@ const HomeUser = () => {
                 <C.Img><img src={img} alt="home"/></C.Img>
                 <Content>
                     {/*<C.LabelGroup>{grupos}*/}
-                        <ButtonHome Text="Encontre Grupos de Pedal" onClick={() => [ navigate("/maps")]} />
+                        <ButtonHome Text="Encontre Grupos de Pedal" onClick={() => [navigate("/groups")]} />
                         <ButtonHome Text="Crie sua Rota e Convide" onClick={maps} />
                         <ButtonHome Text="Combine Rotas com usuários" onClick={maps} />
                     {/*</C.LabelGroup>*/}
