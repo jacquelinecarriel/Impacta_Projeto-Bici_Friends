@@ -27,7 +27,7 @@ const Signin = () => {
             setError(res);
             return;
         }
-        navigate("/home");
+        navigate("/homeuser");
     }
 
     return(

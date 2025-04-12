@@ -12,7 +12,7 @@ export const ContainerBlue = styled.div`
     position: absolute;
     height: 100%;
     left: 0px;
-    width: 40%;
+    width: 30%;
 `;
 
 
@@ -35,10 +35,33 @@ export const Top = styled.div`
     transform: translate(1200%, 5%);
     text-align: center;
 
-    //width: 33.33%;
-    //padding: 70px;
+`;
+export const Label = styled.label`
+    font-size: 18px;
+    font-weight: 600;
+    color: #000080;
+`;
+
+export const ContainerText = styled.div`
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    width: 300%;
+`;
+
+export const ContainerText1 = styled.div`
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    width: 300%;
 `;
 
 
 
-export const Title = styled.h2``;
+export const Title = styled.h2`
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    width: 300%;
+
+`;
