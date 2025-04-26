@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContainerWhite = styled.div`
     display: flex;
     justify-content: center;
-    width: 50%;
+    width: 70%;
     background-color: #fffff;
 `;
 
@@ -14,7 +14,6 @@ export const ContainerBlue = styled.div`
     left: 0px;
     width: 30%;
 `;
-
 
 export const Content = styled.div`
     position: absolute;
@@ -43,20 +42,54 @@ export const Label = styled.label`
 `;
 
 export const ContainerText = styled.div`
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    width: 300%;
+    font-size: 17px;
+    background-color: #fffff;
+    width: inline-block;
+    border: 15px;
+    padding: 50px;
+    margin: 10px;
+   transform: translate(100%, 5%);
+
+
 `;
 
 export const ContainerText1 = styled.div`
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    width: 300%;
+    font-size: 15px;
+    display: table;
+    justify-text: justify;
+    width: 400px;
+
 `;
 
+export const ContainerText2 = styled.div`
+    font-size: 12px;
+    padding: 20px;
+//    width: 200px;
+//    float: left;
+//    transform: translate(50px, 55%);
+//    flex-grow: 1;          /* Takes remaining space */
+//    background: #f5f5f5;
 
+    .container {
+      display: flex;          /* Enables Flexbox */
+      align-items: center;    /* Vertically centers items */
+      gap: 16px;             /* Adds space between boxes */
+    }
+
+    .box {
+      padding: 20px;
+      border: 1px solid #ddd; /* Optional border */
+      border-radius: 4px;     /* Optional rounded corners */
+    }
+    .text-box {
+      width: 400px;
+      flex-grow: 1;
+      margin: 5px;
+      padding: 8px;/* Takes remaining space */
+      background: #f5f5f5;   /* Optional background */
+    }
+
+`;
 
 export const Title = styled.h2`
     font-size: 25px;

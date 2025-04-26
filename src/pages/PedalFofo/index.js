@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+
 import * as C from "./style";
 import {useNavigate} from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import img from "./images/fofo.jpeg";
-import {Content, Label, Title, ContainerText, ContainerText1} from "./style";
+import Input from "../../components/Input";
+import {Content, Label, Title, ContainerText, ContainerText1, ContainerText2} from "./style";
+import ButtonSubscribe from "../../components/ButtonSubscribe";
 import Button from "../../components/Button";
+
 
 const PedalFofo = () => {
     const navigate = useNavigate();
+
     const {signout} = useAuth();
+
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
+
+
+    const handleSubscribe = () => {
+        if (!email) {
+        setError("Adicione seu e-amil");
+            return;
+        }
+        navigate("/homeuser");
+    }
 
     return(
         <C.ContainerWhite>
@@ -18,22 +35,48 @@ const PedalFofo = () => {
                  <C.Title>Quem somos?</C.Title>
 
                  <C.ContainerText>
-                 Pedalzinho fofo por SP 🚴🏻‍♀️💕 - As vezes rola, as vezes não (A cada 15 dias) 💘
+                 <p>Pedalzinho fofo por SP 🚴🏻‍♀️💕 </p>
 
                  <C.ContainerText1>
-                                  Eai pessoaaaal, bora de Pedal Fofo! #38 Edição vem aí!
+                      <br></br>
+                      Eai pessoaaaal, bora de Pedal Fofo! #38 Edição vem aí!
+                      Concentração 10h na Praça Roosevelt
+                      <br></br>
+                      <br></br>
+                      — Saímos às 11h do Sábado 29/03/2025
+                       <br></br>
+                       <br></br>
+                      ️ Convidamos a todes para mais um pedal tranquilo e calmo, pode vir de bike Itaú ou a bike do seu tio, todes são muito bem-vindes!
+                       Aconselhamos o uso de capacete
+                       Se possível trazer câmara reserva e ferramentas básicas (caso ocorra algum pneu furado)
 
-                                  Concentração 10h na Praça Roosevelt — Saímos às 11h
-                                  Sábado 29/03/2025
-
-                                  ️ Convidamos a todes para mais um pedal tranquilo e calmo, pode vir de bike Itaú ou a bike do seu tio, todes são muito bem-vindes!
-                                   Aconselhamos o uso de capacete
-                                   Se possível trazer câmara reserva e ferramentas básicas (caso ocorra algum pneu furado)
-
-                                  O role é totalmente inclusivo, e não será tolerado qualquer tipo de preconceito e descriminação!
+                      O role é totalmente inclusivo, e não será tolerado qualquer tipo de preconceito e descriminação!
 
                 </C.ContainerText1>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+               <C.ContainerText2>
+                <div class = "container">
+                    <div class = "box text-box">
+                        Quer fazer parte do nosso grupo e receber nossos proximos roles?
+                        <br></br>
+                        <br></br>
+                        <Input
+                            type="email"
+                            placeholder="Seu e-mail Aqui"
+                            value={email}
+                             onChange={(e) => [setEmail(e.target.value), setError("")]}
+                        />
+
+                         <ButtonSubscribe class="box button-box" Text="Inscreva-se" onClick={handleSubscribe}  />
+                    </div>
+                </div>
+            </C.ContainerText2>
+
                 </C.ContainerText>
+
             </Content>
 
             </C.ContainerBlue>
