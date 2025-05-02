@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import * as C from "./style";
 import {useNavigate} from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -12,8 +11,8 @@ import Button from "../../components/Button";
 
 const PedalFofo = () => {
     const navigate = useNavigate();
-
-    const {signout} = useAuth();
+    const { subscribe } = useAuth();
+    const { signout } = useAuth();
 
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
@@ -21,7 +20,13 @@ const PedalFofo = () => {
 
     const handleSubscribe = () => {
         if (!email) {
-        setError("Adicione seu e-amil");
+        setError("Adicione seu e-mail");
+            return;
+        }
+        const res = subscribe(email);
+
+        if(res) {
+            setError(res);
             return;
         }
         navigate("/homeuser");
@@ -69,6 +74,8 @@ const PedalFofo = () => {
                             value={email}
                              onChange={(e) => [setEmail(e.target.value), setError("")]}
                         />
+                        <ButtonSubscribe class="box button-box" Text="Inscreva-se" onClick={() => [handleSubscribe(), navigate("/homeuser")]} />
+
 
                          <ButtonSubscribe class="box button-box" Text="Inscreva-se" onClick={handleSubscribe}  />
                     </div>

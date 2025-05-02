@@ -8,8 +8,10 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const userToken = localStorage.getItem("user_token");
         const usersStorage = localStorage.getItem("users_bd");
+        const subscribeStorage = localStorage.getItem("subscribe_db");
 
-        if (userToken && usersStorage) {
+
+        if (userToken && usersStorage && subscribeStorage) {
             const hasUser = JSON.parse(usersStorage)?.filter(
                 (user) => user.email === JSON.parse(userToken).email
             );
@@ -17,6 +19,7 @@ export const AuthProvider = ({ children }) => {
             if (hasUser) setUser(hasUser[0]);
         }
     }, []);
+
 
     const signin = (email, password) => {
         const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
@@ -64,9 +67,42 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem("user_token");
     };
 
+    const subscribe = (email) => {
+            const subscribeStorage = JSON.parse(localStorage.getItem("subscribe_db"));
+
+            const hasUser = subscribeStorage?.filter((user) => user.email === email);
+
+            if (hasUser?.length) {
+                return "Já tem uma conta com esse E-mail";
+            }
+
+            let newUser;
+
+            if (subscribeStorage) {
+                newUser = [...subscribeStorage, { email }];
+            } else {
+                newUser = [{ email }];
+            }
+
+            localStorage.setItem("subscribe_db", JSON.stringify(newUser));
+
+            return;
+
+//            if (hasUser?.length) {
+//                if (hasUser[0].email === email) {
+//                    const token = Math.random().toString(36).substring(2);
+//                    localStorage.setItem("subscribe_db", JSON.stringify({ email }));
+//                    setUser({ email });
+//                    return;
+//                } else {
+//                    return "Email bla bla";
+//            }
+//        }
+    };
+
     return (
         <AuthContext.Provider
-            value={{ user, signed: !!user, signin, signup, signout }}
+            value={{ user, signed: !!user, signin, signup, signout, subscribe }}
         >
             {children}
         </AuthContext.Provider>
