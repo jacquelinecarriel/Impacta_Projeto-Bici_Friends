@@ -9,8 +9,10 @@ export const ContainerWhite = styled.div`
 
 export const ContainerBlue = styled.div`
     background-color: #00b8e6;
-    position: static;
-    left: 10%;
+        position: static;
+        left: 10%;
+        height: 700px;
+
 `;
 
 

@@ -74,11 +74,9 @@ const PedalFofo = () => {
                             value={email}
                              onChange={(e) => [setEmail(e.target.value), setError("")]}
                         />
+                         <C.labelError>{error}</C.labelError>
                         <ButtonSubscribe class="box button-box" Text="Inscreva-se" onClick={() => [handleSubscribe(), navigate("/homeuser")]} />
-
-
-                         <ButtonSubscribe class="box button-box" Text="Inscreva-se" onClick={handleSubscribe}  />
-                    </div>
+                   </div>
                 </div>
             </C.ContainerText2>
 

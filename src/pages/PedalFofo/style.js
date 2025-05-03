@@ -61,6 +61,11 @@ export const ContainerText1 = styled.div`
 
 `;
 
+export const labelError = styled.label`
+    font-sized: 14px;
+    color: #000080;
+`;
+
 export const ContainerText2 = styled.div`
     font-size: 12px;
     padding: 20px;
