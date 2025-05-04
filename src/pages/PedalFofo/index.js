@@ -10,6 +10,7 @@ import Button from "../../components/Button";
 
 
 const PedalFofo = () => {
+
     const navigate = useNavigate();
     const { subscribe } = useAuth();
     const { signout } = useAuth();
@@ -23,6 +24,7 @@ const PedalFofo = () => {
         setError("Adicione seu e-mail");
             return;
         }
+
         const res = subscribe(email);
 
         if(res) {
@@ -75,7 +77,8 @@ const PedalFofo = () => {
                              onChange={(e) => [setEmail(e.target.value), setError("")]}
                         />
                          <C.labelError>{error}</C.labelError>
-                        <ButtonSubscribe class="box button-box" Text="Inscreva-se" onClick={() => [handleSubscribe(), navigate("/homeuser")]} />
+                         <br></br>
+                        <ButtonSubscribe class="box button-box" Text="Inscreva-se" onClick={handleSubscribe} />
                    </div>
                 </div>
             </C.ContainerText2>

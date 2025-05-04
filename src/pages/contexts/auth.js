@@ -78,10 +78,10 @@ export const AuthProvider = ({ children }) => {
                     setUser({ email });
                     return;
                 } else {
-                    return "E-mail incorreto";
+                    return "Adicione seu e-mail corretamente";
             }
         }else{
-            return "fodase;"
+            return "E-mail não é o mesmo do usuário;"
         }
     };
 

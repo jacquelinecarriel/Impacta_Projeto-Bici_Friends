@@ -50,7 +50,11 @@ export const ContainerText = styled.div`
     margin: 10px;
    transform: translate(100%, 5%);
 
+`;
 
+export const labelError = styled.label`
+    font-sized: 20px;
+    color: #2F4F4F;
 `;
 
 export const ContainerText1 = styled.div`
@@ -59,11 +63,6 @@ export const ContainerText1 = styled.div`
     justify-text: justify;
     width: 400px;
 
-`;
-
-export const labelError = styled.label`
-    font-sized: 14px;
-    color: #000080;
 `;
 
 export const ContainerText2 = styled.div`
