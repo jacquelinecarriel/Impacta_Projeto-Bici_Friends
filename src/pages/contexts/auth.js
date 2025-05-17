@@ -67,22 +67,27 @@ export const AuthProvider = ({ children }) => {
     };
 
 
-    const subscribe = (email) => {
-        const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
-        const hasUser = usersStorage?.filter((user) => user.email === email);
-
-            if (hasUser?.length) {
-                if (hasUser[0].email === email ) {
-
-                    localStorage.setItem("subscribe_db", JSON.stringify({ email }));
-                    setUser({ email });
-                    return;
-                } else {
-                    return "Adicione seu e-mail corretamente";
-            }
-        }else{
-            return "E-mail não é o mesmo do usuário;"
+    const subscribe = (email, nome) => {
+    if (!email || !email.includes('@') || !email.includes('.')) {
+            return "Por favor, adicione um e-mail válido";
         }
+        const subscribeStorage = JSON.parse(localStorage.getItem("subscribe_db"));
+
+        let newSubscriber;
+
+        if (subscribeStorage) {
+                newSubscriber = [...subscribeStorage, { email, nome }];
+            } else {
+                newSubscriber = [{ email, nome }];
+            }
+
+        localStorage.setItem("subscribe_db", JSON.stringify(newSubscriber));
+        return "Inscrição realizada com sucesso!";
+
+        const getSubscribers = () => {
+            return JSON.parse(localStorage.getItem("subscribe_db")) || [];
+        };
+
     };
 
     return (

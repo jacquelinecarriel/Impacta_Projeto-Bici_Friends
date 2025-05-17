@@ -11,21 +11,24 @@ import Button from "../../components/Button";
 
 const PedalFofo = () => {
 
-    const navigate = useNavigate();
     const { subscribe } = useAuth();
+    const navigate = useNavigate();
+
     const { signout } = useAuth();
 
     const [email, setEmail] = useState("");
+    const [nome, setNome] = useState("");
+
     const [error, setError] = useState("");
 
 
     const handleSubscribe = () => {
-        if (!email) {
-        setError("Adicione seu e-mail");
+        if (!email | !nome ) {
+        setError("Adicione seu dados corretamente");
             return;
         }
 
-        const res = subscribe(email);
+        const res = subscribe(email, nome);
 
         if(res) {
             setError(res);
@@ -70,6 +73,12 @@ const PedalFofo = () => {
                         Quer fazer parte do nosso grupo e receber nossos proximos roles?
                         <br></br>
                         <br></br>
+                        <Input
+                            type="nome"
+                            placeholder="Seu Nome Aqui"
+                            value={nome}
+                             onChange={(e) => [setNome(e.target.value), setError("")]}
+                        />
                         <Input
                             type="email"
                             placeholder="Seu e-mail Aqui"
