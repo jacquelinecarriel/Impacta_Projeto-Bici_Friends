@@ -7,6 +7,7 @@ import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 import Maps from "../pages/Maps"
 import PedalFofo from "../pages/PedalFofo";
+import SubscribeUser from "../pages/SubscribeUser";
 import useAuth from "../hooks/useAuth";
 
 const Private = ({ Item }) => {
@@ -24,6 +25,7 @@ const RoutesApp = () => {
                     <Route exact path="/homeuser" element={<Private Item={HomeUser} />} />
                     <Route exact path="/groups" element={<Private Item={Groups} />} />
                     <Route exact path="/pedalfofo" element={<Private Item={PedalFofo} />} />
+                    <Route exact path="/subscribeuser" element={<Private Item={SubscribeUser}/>} />
                     <Route path="/" element={<Signin />} />
                     <Route exact path="/signup" element={<Signup />} />
                     <Route path="*" element={<Signin />} />
