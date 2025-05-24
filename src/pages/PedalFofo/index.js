@@ -7,6 +7,7 @@ import Input from "../../components/Input";
 import {Content, Label, Title, ContainerText, ContainerText1, ContainerText2} from "./style";
 import ButtonSubscribe from "../../components/ButtonSubscribe";
 import Button from "../../components/Button";
+import subscribeuser from "../SubscribeUser"
 
 
 const PedalFofo = () => {
@@ -79,6 +80,8 @@ const PedalFofo = () => {
                             value={nome}
                              onChange={(e) => [setNome(e.target.value), setError("")]}
                         />
+                        <br></br>
+                        <br></br>
                         <Input
                             type="email"
                             placeholder="Seu e-mail Aqui"
@@ -87,7 +90,10 @@ const PedalFofo = () => {
                         />
                          <C.labelError>{error}</C.labelError>
                          <br></br>
-                        <ButtonSubscribe class="box button-box" Text="Inscreva-se" onClick={handleSubscribe} />
+                         <br></br>
+
+                        <ButtonSubscribe class="box button-box" Text="Inscreva-se"  onClick={(handleSubscribe)} />
+
                    </div>
                 </div>
             </C.ContainerText2>

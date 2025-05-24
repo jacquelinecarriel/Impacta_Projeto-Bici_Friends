@@ -68,29 +68,25 @@ export const ContainerText1 = styled.div`
 export const ContainerText2 = styled.div`
     font-size: 12px;
     padding: 20px;
-//    width: 200px;
-//    float: left;
-//    transform: translate(50px, 55%);
-//    flex-grow: 1;          /* Takes remaining space */
-//    background: #f5f5f5;
+
 
     .container {
       display: flex;          /* Enables Flexbox */
       align-items: center;    /* Vertically centers items */
-      gap: 16px;             /* Adds space between boxes */
+      gap: 16px;
+      width: 450px;/* Adds space between boxes */
     }
 
     .box {
       padding: 20px;
-      border: 1px solid #ddd; /* Optional border */
-      border-radius: 4px;     /* Optional rounded corners */
+      border-radius: 20px;
     }
     .text-box {
       width: 400px;
       flex-grow: 1;
-      margin: 5px;
-      padding: 8px;/* Takes remaining space */
-      background: #f5f5f5;   /* Optional background */
+      margin: 15px;
+      padding: 30px;/* Takes remaining space */
+      background: #f5f5f5;
     }
 
 `;

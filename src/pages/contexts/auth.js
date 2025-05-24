@@ -73,13 +73,29 @@ export const AuthProvider = ({ children }) => {
         }
         const subscribeStorage = JSON.parse(localStorage.getItem("subscribe_db"));
 
+        //Gera id sequencial para usuarios inscritos
+        const id = subscribeStorage.length > 0 ? Math.max(...subscribeStorage.map(sub => sub.id)) + 1 : 1;
+
+        //Não permite repetição de inscrição
+        const emailRepeat = subscribeStorage.some(sub => sub.email === email);
+        if (emailRepeat) {
+            return "Email já está inscrito";
+        }
+
+        //Verifica se o usuario existe na base inicial
+        const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
+        const hasUser = usersStorage?.filter((user) => user.email !== email);
+        if (hasUser[0].email === email) {
+            return "Email não é cadastrado no site";
+        }
+
         let newSubscriber;
 
         if (subscribeStorage) {
-                newSubscriber = [...subscribeStorage, { email, nome }];
-            } else {
-                newSubscriber = [{ email, nome }];
-            }
+                newSubscriber = [...subscribeStorage, { email, nome, id }];
+        } else {
+            newSubscriber = [{ email, nome, id }];
+        }
 
         localStorage.setItem("subscribe_db", JSON.stringify(newSubscriber));
         return "Inscrição realizada com sucesso!";
