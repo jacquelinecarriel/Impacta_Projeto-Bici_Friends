@@ -7,7 +7,6 @@ import Input from "../../components/Input";
 import {Content, Label, Title, ContainerText, ContainerText1, ContainerText2} from "./style";
 import ButtonSubscribe from "../../components/ButtonSubscribe";
 import Button from "../../components/Button";
-import subscribeuser from "../SubscribeUser"
 
 
 const PedalFofo = () => {
@@ -19,7 +18,6 @@ const PedalFofo = () => {
 
     const [email, setEmail] = useState("");
     const [nome, setNome] = useState("");
-
     const [error, setError] = useState("");
 
 
@@ -29,13 +27,13 @@ const PedalFofo = () => {
             return;
         }
 
-        const res = subscribe(email, nome);
+        const res = subscribe(email,nome);
 
         if(res) {
             setError(res);
             return;
         }
-        navigate("/homeuser");
+        navigate("/subscribe");
     }
 
     return(
@@ -88,11 +86,11 @@ const PedalFofo = () => {
                             value={email}
                              onChange={(e) => [setEmail(e.target.value), setError("")]}
                         />
+                         <br></br>
+                         <br></br>
                          <C.labelError>{error}</C.labelError>
-                         <br></br>
-                         <br></br>
 
-                        <ButtonSubscribe class="box button-box" Text="Inscreva-se"  onClick={(handleSubscribe)} />
+                        <ButtonSubscribe class="box button-box" Text="Inscreva-se"  onClick={handleSubscribe}/>
 
                    </div>
                 </div>

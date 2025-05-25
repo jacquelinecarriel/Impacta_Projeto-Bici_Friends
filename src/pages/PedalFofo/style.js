@@ -25,6 +25,7 @@ export const Content = styled.div`
 
 export const Img = styled.div`
     float: left;
+    transform: translate(2%, 5%);
     width: 500%;
     padding: 70px;
 `;
