@@ -4,11 +4,9 @@ export const Input = styled.input`
     outline: none;
     padding: 10px 10px;
     width: 100%;
-    font-size: 16px;
+    font-size: 15px;
     border-radius: 10px;
-
-    
-    background-color: #c2d6d6;
+    background-color: #FFFAFA;
     border: none;
     
 `;

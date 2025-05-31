@@ -4,7 +4,7 @@ export const ContainerWhite = styled.div`
     display: flex;
     justify-content: center;
     width: 50%;
-    background-color: #fffff;
+    background-color: #FFFFFF;
 `;
 
 export const ContainerBlue = styled.div`
@@ -52,7 +52,8 @@ export const ContainerText2 = styled.div`
 
     .container {
       display: flex;          /* Enables Flexbox */
-      align-items: center;    /* Vertically centers items */
+      align-items: center;
+      background-color: #fffff;
       gap: 16px;
       width: 450px;/* Adds space between boxes */
     }
@@ -60,6 +61,8 @@ export const ContainerText2 = styled.div`
     .box {
       padding: 10px;
       border-radius: 20px;
+      background-color: #fffff;
+
     }
     .text-box {
       width: 250px;
@@ -87,12 +90,9 @@ export const ContainerText2 = styled.div`
 
 
 export const Top = styled.div`
-    //left: 100%;
     transform: translate(800%, 2%);
     text-align: center;
 
-    //width: 33.33%;
-    //padding: 70px;
 `;
 
 export const labelError = styled.label`
@@ -100,4 +100,9 @@ export const labelError = styled.label`
     color: #2F4F4F;
 `;
 
-export const Title = styled.h2``;
+export const Title = styled.h2`
+    font-size: 20px;
+    justify-content: center;
+    width: 100%;
+
+`;

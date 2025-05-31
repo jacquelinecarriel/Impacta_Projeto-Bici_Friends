@@ -106,6 +106,26 @@ export const AuthProvider = ({ children }) => {
 
     };
 
+//    const subscribeKepp = (whatsapp, sexo, bairro) => {
+//        if (!whatsapp || !sexo || !bairro) {
+//                return "Por favor, adicione todos os campos";
+//            }
+//            const subscribeStorage = JSON.parse(localStorage.getItem("subscribe_db"));
+//
+//            let uploadSubscribe;
+//
+//            if (subscribeStorage) {
+//                    uploadSubscribe = [...subscribeStorage, { whatsapp, sexo, bairro }];
+//            } else {
+//                uploadSubscribe = [{ whatsapp, sexo, bairro }];
+//            }
+//
+//            localStorage.setItem("subscribe_db", JSON.stringify(uploadSubscribe));
+//            return "Inscrição finalizada!";
+//
+//
+//        };
+
     return (
         <AuthContext.Provider
             value={{ user, signed: !!user, signin, signup, signout, subscribe }}

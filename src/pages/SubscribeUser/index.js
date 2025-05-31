@@ -16,7 +16,7 @@ const SubscribeUser = () => {
     const navigate = useNavigate();
     const { signout } = useAuth();
 
-    const [ nome, setNome ] = useState("");
+    const [ bairro, setBairro ] = useState("");
     const [ whatsapp, setWhatsapp ] = useState("");
     const [ sexo, setSexo ] = useState("");
 
@@ -37,31 +37,32 @@ const SubscribeUser = () => {
                            <C.ContainerText2>
                                 <div class = "container">
                                     <div class = "box text-box">
-                                        Continue sua inscrição para receber todos os nossos proximos roles!
+                                       <C.Title>Continue sua inscrição para receber todos os nossos proximos roles!</C.Title>
                                         <br></br>
                                         <br></br>
-                                    <Input
-                                        type="nome"
-                                        placeholder="Digite seu nome"
-                                        value={nome}
-                                        onChange={(e) => [setNome(e.target.value), setError("")]}
-                                    />
                                         <br></br>
-                                        <br></br>
+
                                     <Input
                                         type="whatsapp"
                                         placeholder="Digite seu whatsapp"
                                         value={whatsapp}
                                         onChange={(e) => [setWhatsapp(e.target.value), setError("")]}
                                     />
-
-                                        <br></br>
-                                        <br></br>
+                                    <br></br>
+                                    <br></br>
                                     <Input
                                         type="sexo"
                                         placeholder="Digite como gostaria de ser identificado"
                                         value={sexo}
                                         onChange={(e) => [setSexo(e.target.value), setError("")]}
+                                    />
+                                    <br></br>
+                                    <br></br>
+                                    <Input
+                                        type="bairro"
+                                        placeholder="Digite seu Bairro"
+                                        value={bairro}
+                                        onChange={(e) => [setBairro(e.target.value), setError("")]}
                                     />
                                         <br></br>
                                         <br></br>
