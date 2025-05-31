@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {ContainerWhite, Content, LabelGroup} from "./styles";
 import ButtonHome from "../../components/ButtonHome";
 import Button from "../../components/Button";
+import img from "./images/colativo2.png";
 import useAuth from "../../hooks/useAuth";
 import ButtonSubscribe from "../../components/ButtonSubscribe";
 
@@ -15,57 +16,93 @@ const SubscribeUser = () => {
     const navigate = useNavigate();
     const { signout } = useAuth();
 
+    const [ nome, setNome ] = useState("");
+    const [ whatsapp, setWhatsapp ] = useState("");
+    const [ sexo, setSexo ] = useState("");
+
     const [error, setError] = useState("");
 
 
         return(
-                <C.ContainerWhite>
-                    <C.ContainerBlue>
+            <C.ContainerWhite>
+                <C.ContainerBlue>
                      <Content>
-                        <p>Pedalzinho fofo por SP 🚴🏻‍♀️💕 </p>
+                        <C.Img><img src={img} alt="colativo2" height="300" /></C.Img>
 
                      </Content>
                      <br></br>
+
+                        <C.ContainerText>
+
+                           <C.ContainerText2>
+                                <div class = "container">
+                                    <div class = "box text-box">
+                                        Continue sua inscrição para receber todos os nossos proximos roles!
+                                        <br></br>
+                                        <br></br>
+                                    <Input
+                                        type="nome"
+                                        placeholder="Digite seu nome"
+                                        value={nome}
+                                        onChange={(e) => [setNome(e.target.value), setError("")]}
+                                    />
+                                        <br></br>
+                                        <br></br>
+                                    <Input
+                                        type="whatsapp"
+                                        placeholder="Digite seu whatsapp"
+                                        value={whatsapp}
+                                        onChange={(e) => [setWhatsapp(e.target.value), setError("")]}
+                                    />
+
+                                        <br></br>
+                                        <br></br>
+                                    <Input
+                                        type="sexo"
+                                        placeholder="Digite como gostaria de ser identificado"
+                                        value={sexo}
+                                        onChange={(e) => [setSexo(e.target.value), setError("")]}
+                                    />
+                                        <br></br>
+                                        <br></br>
+                                        Quer ser adionado ao nosso grupo do whatsapp do Pedal ?
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
+                                    <label class="label" for="myCheckyes">Sim:</label>
+                                       <div class="check">
+                                            <Input class = "check"
+                                                 type="checkbox"
+                                                 id="myCheckyes"
+                                                 onclick="myFunction()"
+                                             />
+                                       </div>
+                                         <br></br>
+                                   <label class="label" for="myCheckno">Não:</label>
+                                   <div class="check">
+                                         <Input
+                                              type="checkbox"
+                                              id="myCheckno"
+                                              onclick="myFunction()"
+                                          />
+                                   </div>
+
+                                        <C.labelError>{error}</C.labelError>
+                                    </div>
+                                </div>
+
+
+                            </C.ContainerText2>
+                    </C.ContainerText>
                 </C.ContainerBlue>
-
-                 <C.ContainerText>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                       <C.ContainerText2>
-                        <div class = "container">
-                            <div class = "box text-box">
-                                Quer fazer parte do nosso grupo e receber nossos proximos roles?
-                                <br></br>
-                                <br></br>
-                                Nome <Input/>
-                                <br></br>
-                                <br></br>
-                                Whatsapp <Input/>
-                                 <br></br>
-                                 <br></br>
-                                 Sexo <Input/>
-                                 <br></br>
-
-                                 <C.labelError>{error}</C.labelError>
-
-
-                           </div>
-                        </div>
-                    </C.ContainerText2>
-
-                        </C.ContainerText>
-
-
-
-
                     <C.Top>
                         <Button Text="Sair" onClick={() => [signout(), navigate("/")]}>
                             Sair
                         </Button>
                     </C.Top>
-                </C.ContainerWhite>
+
+            </C.ContainerWhite>
+
             )
         };
 export default SubscribeUser;
