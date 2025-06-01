@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }) => {
     };
 
 
-    const subscribe = (email, nome) => {
+    const subscribe =  (email, nome) => {
     if (!email || !email.includes('@') || !email.includes('.')) {
             return "Por favor, adicione um e-mail válido";
         }
@@ -106,29 +106,36 @@ export const AuthProvider = ({ children }) => {
 
     };
 
-//    const subscribeKepp = (whatsapp, sexo, bairro) => {
-//        if (!whatsapp || !sexo || !bairro) {
-//                return "Por favor, adicione todos os campos";
-//            }
-//            const subscribeStorage = JSON.parse(localStorage.getItem("subscribe_db"));
-//
-//            let uploadSubscribe;
-//
-//            if (subscribeStorage) {
-//                    uploadSubscribe = [...subscribeStorage, { whatsapp, sexo, bairro }];
-//            } else {
-//                uploadSubscribe = [{ whatsapp, sexo, bairro }];
-//            }
-//
-//            localStorage.setItem("subscribe_db", JSON.stringify(uploadSubscribe));
-//            return "Inscrição finalizada!";
-//
-//
-//        };
+    const subscribeDetail = (email, nome, whatsapp = null, pronome = null, bairro = null) => {
+            const validationResult = subscribe(email, nome);
+
+            if (validationResult !== "Inscrição realizada com sucesso!") {
+                    return validationResult;
+            }
+
+            const subscribeStorage = JSON.parse(localStorage.getItem("subscribe_db")) || [];
+            const subscriberIndex = subscribeStorage.findIndex(sub => sub.email === email);
+
+            if (subscriberIndex !== -1) {
+                    // Atualiza o inscrito com os campos adicionais
+                    subscribeStorage[subscriberIndex] = {
+                        ...subscribeStorage[subscriberIndex],
+                        whatsapp,
+                        pronome,
+                        bairro,
+                        dataAtualizacao: new Date().toISOString()
+                    };
+
+                    localStorage.setItem("subscribe_db", JSON.stringify(subscribeStorage));
+                }
+
+                return "Parabéns, você finalizou sua inscrição!";
+            };
+
 
     return (
         <AuthContext.Provider
-            value={{ user, signed: !!user, signin, signup, signout, subscribe }}
+            value={{ user, signed: !!user, signin, signup, signout, subscribe, subscribeDetail }}
         >
             {children}
         </AuthContext.Provider>

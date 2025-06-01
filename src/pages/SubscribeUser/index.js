@@ -13,14 +13,30 @@ import ButtonSubscribe from "../../components/ButtonSubscribe";
 
 const SubscribeUser = () => {
 
+    const { subscribeDetail } = useAuth();
+
     const navigate = useNavigate();
     const { signout } = useAuth();
 
     const [ bairro, setBairro ] = useState("");
     const [ whatsapp, setWhatsapp ] = useState("");
-    const [ sexo, setSexo ] = useState("");
-
+    const [ pronome, setPronome ] = useState("");
     const [error, setError] = useState("");
+
+    const uploadSubscriber = () => {
+            if (!whatsapp | !pronome | ! bairro ) {
+            setError("Adicione seu dados corretamente");
+                return;
+            }
+
+            const res = subscribeDetail(whatsapp,pronome, bairro);
+
+            if(res) {
+                setError(res);
+                return;
+            }
+            navigate("/subscribeUp");
+    }
 
 
         return(
@@ -53,8 +69,8 @@ const SubscribeUser = () => {
                                     <Input
                                         type="sexo"
                                         placeholder="Digite como gostaria de ser identificado"
-                                        value={sexo}
-                                        onChange={(e) => [setSexo(e.target.value), setError("")]}
+                                        value={pronome}
+                                        onChange={(e) => [setPronome (e.target.value), setError("")]}
                                     />
                                     <br></br>
                                     <br></br>
@@ -66,11 +82,8 @@ const SubscribeUser = () => {
                                     />
                                         <br></br>
                                         <br></br>
-                                        Quer ser adionado ao nosso grupo do whatsapp do Pedal ?
-                                        <br></br>
-                                        <br></br>
-                                        <br></br>
-                                    <label class="label" for="myCheckyes">Sim:</label>
+                                        Eu permito ser adionado ao grupo do whatsapp do Pedal?
+
                                        <div class="check">
                                             <Input class = "check"
                                                  type="checkbox"
@@ -78,17 +91,12 @@ const SubscribeUser = () => {
                                                  onclick="myFunction()"
                                              />
                                        </div>
-                                         <br></br>
-                                   <label class="label" for="myCheckno">Não:</label>
-                                   <div class="check">
-                                         <Input
-                                              type="checkbox"
-                                              id="myCheckno"
-                                              onclick="myFunction()"
-                                          />
-                                   </div>
+
+                                       <br></br>
+                                       <ButtonSubscribe class="box button-box" Text="Inscreva-se"  onClick={uploadSubscriber}/>
 
                                         <C.labelError>{error}</C.labelError>
+
                                     </div>
                                 </div>
 

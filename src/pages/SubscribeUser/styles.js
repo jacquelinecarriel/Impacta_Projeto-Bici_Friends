@@ -80,7 +80,7 @@ export const ContainerText2 = styled.div`
     }
 
     .check {
-         transform: translate(-40%, 2%);
+         transform: translate(30%, -75%);
 
     }
 

@@ -90,7 +90,7 @@ const PedalFofo = () => {
                          <br></br>
                          <C.labelError>{error}</C.labelError>
 
-                        <ButtonSubscribe class="box button-box" Text="Inscreva-se"  onClick={handleSubscribe}/>
+                        <ButtonSubscribe class="box button-box" Text="Inscreva-se"   onClick={(handleSubscribe) => [navigate("/subscribe")]}/>
 
                    </div>
                 </div>
