@@ -106,36 +106,37 @@ export const AuthProvider = ({ children }) => {
 
     };
 
-    const subscribeDetail = (email, nome, whatsapp = null, pronome = null, bairro = null) => {
-            const validationResult = subscribe(email, nome);
+    const createGroup = (  nome, cidade, descrição ) => {
 
-            if (validationResult !== "Inscrição realizada com sucesso!") {
-                    return validationResult;
-            }
+        const groupStorage = JSON.parse(localStorage.getItem("group_db"));
 
-            const subscribeStorage = JSON.parse(localStorage.getItem("subscribe_db")) || [];
-            const subscriberIndex = subscribeStorage.findIndex(sub => sub.email === email);
+        const id = groupStorage.length > 0 ? Math.max(...groupStorage.map(sub => sub.id)) + 1 : 1;
 
-            if (subscriberIndex !== -1) {
-                    // Atualiza o inscrito com os campos adicionais
-                    subscribeStorage[subscriberIndex] = {
-                        ...subscribeStorage[subscriberIndex],
-                        whatsapp,
-                        pronome,
-                        bairro,
-                        dataAtualizacao: new Date().toISOString()
-                    };
+        const nomeRepeat = groupStorage.some(sub => sub.nome === nome);
+        if (nomeRepeat) {
+            return "Nome do grupo já existe na plataforma";
+        }
 
-                    localStorage.setItem("subscribe_db", JSON.stringify(subscribeStorage));
-                }
+        let newGroup;
 
-                return "Parabéns, você finalizou sua inscrição!";
-            };
+        if(groupStorage) {
+               newGroup = [...groupStorage, { nome, cidade, descrição, id }];
+        } else {
+            newGroup = [{nome, cidade, descrição, id }]
+        }
+
+        localStorage.setItem("group_db", JSON.stringify(newGroup));
+                return "Você criou seu grupo, parabéns!";
+
+        };
+
+
+
 
 
     return (
         <AuthContext.Provider
-            value={{ user, signed: !!user, signin, signup, signout, subscribe, subscribeDetail }}
+            value={{ user, signed: !!user, signin, signup, signout, subscribe, createGroup }}
         >
             {children}
         </AuthContext.Provider>

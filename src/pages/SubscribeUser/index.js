@@ -13,23 +13,23 @@ import ButtonSubscribe from "../../components/ButtonSubscribe";
 
 const SubscribeUser = () => {
 
-    const { subscribeDetail } = useAuth();
+    const { createGroup } = useAuth();
 
     const navigate = useNavigate();
     const { signout } = useAuth();
 
-    const [ bairro, setBairro ] = useState("");
-    const [ whatsapp, setWhatsapp ] = useState("");
-    const [ pronome, setPronome ] = useState("");
+    const [ nome, setNome ] = useState("");
+    const [ cidade, setCidade ] = useState("");
+    const [ descrição, setDescrição ] = useState("");
     const [error, setError] = useState("");
 
     const uploadSubscriber = () => {
-            if (!whatsapp | !pronome | ! bairro ) {
-            setError("Adicione seu dados corretamente");
+            if (!nome | !cidade | ! descrição ) {
+            setError("Complete sua inscrição");
                 return;
             }
 
-            const res = subscribeDetail(whatsapp,pronome, bairro);
+            const res = createGroup(nome, cidade, descrição);
 
             if(res) {
                 setError(res);
@@ -53,32 +53,32 @@ const SubscribeUser = () => {
                            <C.ContainerText2>
                                 <div class = "container">
                                     <div class = "box text-box">
-                                       <C.Title>Continue sua inscrição para receber todos os nossos proximos roles!</C.Title>
+                                       <C.Title>Crie seu grupo e marque roles !</C.Title>
                                         <br></br>
                                         <br></br>
                                         <br></br>
 
                                     <Input
-                                        type="whatsapp"
-                                        placeholder="Digite seu whatsapp"
-                                        value={whatsapp}
-                                        onChange={(e) => [setWhatsapp(e.target.value), setError("")]}
+                                        type="nome"
+                                        placeholder="Digite o nome do grupo"
+                                        value={nome}
+                                        onChange={(e) => [setNome(e.target.value), setError("")]}
                                     />
                                     <br></br>
                                     <br></br>
                                     <Input
-                                        type="sexo"
-                                        placeholder="Digite como gostaria de ser identificado"
-                                        value={pronome}
-                                        onChange={(e) => [setPronome (e.target.value), setError("")]}
+                                        type="cidade"
+                                        placeholder="Digite a cidade em que você pedala"
+                                        value={cidade}
+                                        onChange={(e) => [setCidade (e.target.value), setError("")]}
                                     />
                                     <br></br>
                                     <br></br>
                                     <Input
-                                        type="bairro"
-                                        placeholder="Digite seu Bairro"
-                                        value={bairro}
-                                        onChange={(e) => [setBairro(e.target.value), setError("")]}
+                                        type="descrição"
+                                        placeholder="Adicione uma descrição"
+                                        value={descrição}
+                                        onChange={(e) => [setDescrição(e.target.value), setError("")]}
                                     />
                                         <br></br>
                                         <br></br>
@@ -95,7 +95,9 @@ const SubscribeUser = () => {
                                        <br></br>
                                        <ButtonSubscribe class="box button-box" Text="Inscreva-se"  onClick={uploadSubscriber}/>
 
+                                   <div class="error">
                                         <C.labelError>{error}</C.labelError>
+                                    </div>
 
                                     </div>
                                 </div>

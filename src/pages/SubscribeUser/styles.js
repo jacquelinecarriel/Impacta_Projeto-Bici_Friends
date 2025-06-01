@@ -80,9 +80,12 @@ export const ContainerText2 = styled.div`
     }
 
     .check {
-         transform: translate(30%, -75%);
+         transform: translate(30%, -50%);
 
     }
+    .error{
+        transform: translate(30%, -140%);
+     }
 
 `;
 
@@ -98,6 +101,7 @@ export const Top = styled.div`
 export const labelError = styled.label`
     font-sized: 20px;
     color: #2F4F4F;
+
 `;
 
 export const Title = styled.h2`
