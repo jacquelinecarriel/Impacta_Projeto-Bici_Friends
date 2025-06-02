@@ -84,12 +84,14 @@ export const ContainerText2 = styled.div`
 
     }
     .error{
-        transform: translate(30%, -140%);
+        transform: translate(40%, -140%);
+     }
+     .buttons{
+          transform: translate(30%, 50%);
+
      }
 
 `;
-
-
 
 
 export const Top = styled.div`

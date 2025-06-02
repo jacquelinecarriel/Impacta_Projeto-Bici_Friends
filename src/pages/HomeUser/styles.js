@@ -22,6 +22,12 @@ export const Content = styled.div`
     left: 70%;
     transform: translate(-50%, -50%);
     text-align: center;
+
+    .buttons {
+          position: absolute;
+          top: 50%;
+          left: 70%;
+        }
 `;
 
 export const Img = styled.div`

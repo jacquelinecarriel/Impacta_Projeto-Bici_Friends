@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import * as C from "./styles"
-import {useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import {ContainerWhite, Content} from "./styles";
 import Button from "../../components/Button";
+import ButtonCreate from "../../components/ButtonCreate";
 import useAuth from "../../hooks/useAuth";
 import img from "./images/fofo.jpeg";
 import pedalFofo from "../PedalFofo";
@@ -28,6 +29,12 @@ const Groups = () => {
                             <div className="img_container">
                                 <img src={`${require('./images/vespas.png')}`} id="vespas"/>
                         </div>
+                        <br></br>
+                         <div className="button">
+                            <ButtonCreate  Text="Crie seu grupo"   onClick={() => [navigate("/creategroup")]}/>
+
+                         </div>
+
                   </Content>
                 </C.ContainerBlue>
                 <C.Top>

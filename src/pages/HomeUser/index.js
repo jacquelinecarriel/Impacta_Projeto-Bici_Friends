@@ -8,6 +8,8 @@ import {ContainerWhite, Content, LabelGroup} from "./styles";
 import ButtonHome from "../../components/ButtonHome";
 import img from "./images/home.png";
 import Button from "../../components/Button";
+import ButtonCreate from "../../components/ButtonCreate";
+
 import useAuth from "../../hooks/useAuth";
 
 
@@ -25,9 +27,9 @@ const HomeUser = () => {
                 <Content>
                     <br></br>
                         <ButtonHome Text="Encontre Grupos de Pedal" onClick={() => [navigate("/groups")]} />
-                        <ButtonHome Text="Crie sua Rota e Convide" onClick={maps} />
-                        <ButtonHome Text="Combine Rotas com usuários" onClick={maps} />
-                    {/*</C.LabelGroup>*/}
+                        <ButtonHome Text="Crie seu Grupo e Gere Eventos" onClick={() => [navigate("/creategroup")]}/>
+                        <ButtonHome Text="Crie sua Rota e Convide Amigos" onClick={maps} />
+
                     </Content>
                 </C.ContainerBlue>
                 <C.Top>

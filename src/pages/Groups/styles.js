@@ -27,7 +27,7 @@ export const Content = styled.div`
         justify-content: right;
         align-items: center;
         padding-top: 0px;
-        transform: translate(300%, -150%);
+        transform: translate(400%, -150%);
         border-radius: 10px;
         margin-top: -50px;
         float: right;
@@ -52,13 +52,22 @@ export const Content = styled.div`
         justify-content: center;
         align-items: center;
         border-radius: 10px;
+    }
+    .button {
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        transform: translate(200%, -00%);
+        }
+
 `;
 
 
 
 export const Top = styled.div`
     //left: 100%;
-    transform: translate(650%, 5%);
+    transform: translate(850%, 5%);
     text-align: center;
 
     //width: 33.33%;
@@ -66,5 +75,19 @@ export const Top = styled.div`
 `;
 
 
+export const Strong = styled.strong`
+    cursor: pointer;
 
-export const Title = styled.h2``;
+    a{
+        text-decoration: none;
+        color: #676767;
+    }
+`;
+
+export const Title = styled.h2`
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    width: 300%;
+
+`;

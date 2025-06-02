@@ -6,6 +6,9 @@ import img from "./images/fofo.jpeg";
 import Input from "../../components/Input";
 import {Content, Label, Title, ContainerText, ContainerText1, ContainerText2} from "./style";
 import ButtonSubscribe from "../../components/ButtonSubscribe";
+import ButtonBack from "../../components/ButtonBack";
+import ButtonCreate from "../../components/ButtonCreate";
+
 import Button from "../../components/Button";
 
 
@@ -56,15 +59,12 @@ const PedalFofo = () => {
                        <br></br>
                        <br></br>
                       ️ Convidamos a todes para mais um pedal tranquilo e calmo, pode vir de bike Itaú ou a bike do seu tio, todes são muito bem-vindes!
-                       Aconselhamos o uso de capacete
-                       Se possível trazer câmara reserva e ferramentas básicas (caso ocorra algum pneu furado)
+
 
                       O role é totalmente inclusivo, e não será tolerado qualquer tipo de preconceito e descriminação!
 
                 </C.ContainerText1>
-                <br></br>
-                <br></br>
-                <br></br>
+
                 <br></br>
                <C.ContainerText2>
                 <div class = "container">
@@ -86,11 +86,20 @@ const PedalFofo = () => {
                             value={email}
                              onChange={(e) => [setEmail(e.target.value), setError("")]}
                         />
+                        <br></br>
+                        <br></br>
+
+                        <ButtonBack  Text="Voltar"  />
+                        <ButtonSubscribe class="box button-box" Text="Inscreva-se"   onClick={(handleSubscribe) => [navigate("/subscribe")]}/>
+                        <ButtonCreate class="box button-box" Text="Crie seu grupo"   onClick={() => [navigate("/creategroup")]}/>
+
+
+
+
+
                          <br></br>
                          <br></br>
                          <C.labelError>{error}</C.labelError>
-
-                        <ButtonSubscribe class="box button-box" Text="Inscreva-se"   onClick={(handleSubscribe) => [navigate("/subscribe")]}/>
 
                    </div>
                 </div>

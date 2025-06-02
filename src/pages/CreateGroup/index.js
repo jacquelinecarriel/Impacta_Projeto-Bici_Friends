@@ -6,12 +6,13 @@ import {useNavigate} from "react-router-dom";
 import {ContainerWhite, Content, LabelGroup} from "./styles";
 import ButtonHome from "../../components/ButtonHome";
 import Button from "../../components/Button";
+import ButtonCreate from "../../components/ButtonCreate";
+import ButtonBack from "../../components/ButtonBack";
 import img from "./images/colativo2.png";
 import useAuth from "../../hooks/useAuth";
-import ButtonSubscribe from "../../components/ButtonSubscribe";
 
 
-const SubscribeUser = () => {
+const CreateGroup = () => {
 
     const { createGroup } = useAuth();
 
@@ -23,7 +24,7 @@ const SubscribeUser = () => {
     const [ descrição, setDescrição ] = useState("");
     const [error, setError] = useState("");
 
-    const uploadSubscriber = () => {
+    const create = () => {
             if (!nome | !cidade | ! descrição ) {
             setError("Complete sua inscrição");
                 return;
@@ -35,7 +36,7 @@ const SubscribeUser = () => {
                 setError(res);
                 return;
             }
-            navigate("/subscribeUp");
+            navigate("/");
     }
 
 
@@ -68,7 +69,7 @@ const SubscribeUser = () => {
                                     <br></br>
                                     <Input
                                         type="cidade"
-                                        placeholder="Digite a cidade em que você pedala"
+                                        placeholder="Digite a cidade onde será seu pedal"
                                         value={cidade}
                                         onChange={(e) => [setCidade (e.target.value), setError("")]}
                                     />
@@ -82,19 +83,13 @@ const SubscribeUser = () => {
                                     />
                                         <br></br>
                                         <br></br>
-                                        Eu permito ser adionado ao grupo do whatsapp do Pedal?
-
-                                       <div class="check">
-                                            <Input class = "check"
-                                                 type="checkbox"
-                                                 id="myCheckyes"
-                                                 onclick="myFunction()"
-                                             />
-                                       </div>
-
-                                       <br></br>
-                                       <ButtonSubscribe class="box button-box" Text="Inscreva-se"  onClick={uploadSubscriber}/>
-
+                                        <div class="buttons">
+                                        <ButtonBack  Text="Voltar"  />
+                                        <ButtonCreate class="box button-box" Text="Criar o Grupo"  onClick={create}/>
+                                        </div>
+                                        <br></br>
+                                        <br></br>
+                                        <br></br>
                                    <div class="error">
                                         <C.labelError>{error}</C.labelError>
                                     </div>
@@ -116,4 +111,4 @@ const SubscribeUser = () => {
 
             )
         };
-export default SubscribeUser;
+export default CreateGroup;
