@@ -23,11 +23,11 @@ export const Content = styled.div`
         border: none;
         padding: 10px;
         height: auto;
-        width: 100%;
+        width: 400%;
         justify-content: right;
         align-items: center;
         padding-top: 0px;
-        transform: translate(400%, -150%);
+        transform: translate(400%, -200%);
         border-radius: 10px;
         margin-top: -50px;
         float: right;
@@ -53,13 +53,11 @@ export const Content = styled.div`
         align-items: center;
         border-radius: 10px;
     }
+
     .button {
-            height: 100%;
-            width: 100%;
-            justify-content: center;
-            align-items: center;
-        transform: translate(200%, -00%);
-        }
+        transform: translate(500%, -500%);
+
+    }
 
 `;
 

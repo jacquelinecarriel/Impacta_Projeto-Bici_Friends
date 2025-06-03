@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const userToken = localStorage.getItem("user_token");
+        const
         const usersStorage = localStorage.getItem("users_bd");
         const subscribeStorage = localStorage.getItem("subscribe_db");
 
@@ -27,17 +28,26 @@ export const AuthProvider = ({ children }) => {
             if (hasUser?.length) {
                 if (hasUser[0].email === email && hasUser[0].password === password) {
                     const token = Math.random().toString(36).substring(2);
+                    const userData = {
+                        email: user.email,
+                        token,
+                        timestamp: new Date().getTime()  // Para validar expiração se necessário
+                    };
 
-                    localStorage.setItem("user_token", JSON.stringify({ email, token }));
-                    setUser({ email, password });
-                    return;
-                } else {
-                    return "E-mail ou senha incorretos";
-            }
-        } else {
-            return "Usuário não cadastrado";
-        }
+                     localStorage.setItem("user_token", JSON.stringify(userData));
+                     localStorage.setItem("logged_user", JSON.stringify(user));
+
+                     return "Login realizado com sucesso";
+        };
+
+    const getLoggedUser = () => {
+        const user = JSON.parse(localStorage.getItem("logged_user"));
+        return user || null;
     };
+
+
+
+
 
     const signup = (email, password) => {
         const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
@@ -136,7 +146,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider
-            value={{ user, signed: !!user, signin, signup, signout, subscribe, createGroup }}
+            value={{ user, signed: !!user, signin, signup, signout, subscribe, createGroup, getLoggedUser }}
         >
             {children}
         </AuthContext.Provider>

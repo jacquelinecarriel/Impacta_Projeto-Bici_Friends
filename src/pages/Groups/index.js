@@ -22,18 +22,16 @@ const Groups = () => {
                         <div className="img_container">
                             <img src={`${require('./images/fofo.jpeg')}`} id="fofo" onClick={() => [ navigate("/pedalFofo")]}/>
                         </div>
-
                         <div className="img_container">
                                 <img src={`${require('./images/lesmas.jpeg')}`} id="lesmas"/>
                         </div>
                             <div className="img_container">
                                 <img src={`${require('./images/vespas.png')}`} id="vespas"/>
                         </div>
-                        <br></br>
-                         <div className="button">
-                            <ButtonCreate  Text="Crie seu grupo"   onClick={() => [navigate("/creategroup")]}/>
-
-                         </div>
+                            <br></br>
+                             <div className="button">
+                                <ButtonCreate  Text="Crie o seu grupo"   onClick={() => [navigate("/creategroup")]}/>
+                        </div>
 
                   </Content>
                 </C.ContainerBlue>
