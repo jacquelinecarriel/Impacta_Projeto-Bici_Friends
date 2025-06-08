@@ -22,15 +22,16 @@ const CreateGroup = () => {
     const [ nome, setNome ] = useState("");
     const [ cidade, setCidade ] = useState("");
     const [ descrição, setDescrição ] = useState("");
+    const [ imagem, setImagem ] = useState("");
     const [error, setError] = useState("");
 
     const create = () => {
-            if (!nome | !cidade | ! descrição ) {
+            if (!nome | !cidade | ! descrição | !imagem ) {
             setError("Complete sua inscrição");
                 return;
             }
 
-            const res = createGroup(nome, cidade, descrição);
+            const res = createGroup(nome, cidade, descrição, imagem);
 
             if(res) {
                 setError(res);
@@ -80,6 +81,17 @@ const CreateGroup = () => {
                                         placeholder="Adicione uma descrição"
                                         value={descrição}
                                         onChange={(e) => [setDescrição(e.target.value), setError("")]}
+                                    />
+                                     <br></br>
+                                     <br></br>
+                                    <label for="imagem">Imagem do Grupo:</label>
+                                    <Input
+                                        type="file"
+                                        id="imagem"
+                                        accept="image/*"
+                                        value={imagem}
+                                        onChange={(e) => [setImagem(e.target.value), setError("")]}
+
                                     />
                                         <br></br>
                                         <br></br>

@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const userToken = localStorage.getItem("user_token");
-        const
+
         const usersStorage = localStorage.getItem("users_bd");
         const subscribeStorage = localStorage.getItem("subscribe_db");
 
@@ -22,30 +22,23 @@ export const AuthProvider = ({ children }) => {
 
 
     const signin = (email, password) => {
-        const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
-        const hasUser = usersStorage?.filter((user) => user.email === email);
+            const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
+            const hasUser = usersStorage?.filter((user) => user.email === email);
 
-            if (hasUser?.length) {
-                if (hasUser[0].email === email && hasUser[0].password === password) {
-                    const token = Math.random().toString(36).substring(2);
-                    const userData = {
-                        email: user.email,
-                        token,
-                        timestamp: new Date().getTime()  // Para validar expiração se necessário
-                    };
+                if (hasUser?.length) {
+                    if (hasUser[0].email === email && hasUser[0].password === password) {
+                        const token = Math.random().toString(36).substring(2);
 
-                     localStorage.setItem("user_token", JSON.stringify(userData));
-                     localStorage.setItem("logged_user", JSON.stringify(user));
-
-                     return "Login realizado com sucesso";
+                        localStorage.setItem("user_token", JSON.stringify({ email, token }));
+                        setUser({ email, password });
+                        return;
+                    } else {
+                        return "E-mail ou senha incorretos";
+                }
+            } else {
+                return "Usuário não cadastrado";
+            }
         };
-
-    const getLoggedUser = () => {
-        const user = JSON.parse(localStorage.getItem("logged_user"));
-        return user || null;
-    };
-
-
 
 
 
@@ -116,9 +109,11 @@ export const AuthProvider = ({ children }) => {
 
     };
 
-    const createGroup = (  nome, cidade, descrição ) => {
+    const createGroup = (  nome, cidade, descrição, imagem ) => {
 
         const groupStorage = JSON.parse(localStorage.getItem("group_db"));
+        const imagemInput = document.getElementById('imagem');
+
 
         const id = groupStorage.length > 0 ? Math.max(...groupStorage.map(sub => sub.id)) + 1 : 1;
 
@@ -130,9 +125,9 @@ export const AuthProvider = ({ children }) => {
         let newGroup;
 
         if(groupStorage) {
-               newGroup = [...groupStorage, { nome, cidade, descrição, id }];
+               newGroup = [...groupStorage, { nome, cidade, descrição, imagem , id }];
         } else {
-            newGroup = [{nome, cidade, descrição, id }]
+            newGroup = [{nome, cidade, descrição, imagem,  id }]
         }
 
         localStorage.setItem("group_db", JSON.stringify(newGroup));
@@ -146,7 +141,7 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider
-            value={{ user, signed: !!user, signin, signup, signout, subscribe, createGroup, getLoggedUser }}
+            value={{ user, signed: !!user, signin, signup, signout, subscribe, createGroup }}
         >
             {children}
         </AuthContext.Provider>
