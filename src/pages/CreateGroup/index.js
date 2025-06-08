@@ -106,7 +106,7 @@ const CreateGroup = () => {
                                         <br></br>
                                         <div class="buttons">
                                         <ButtonBack  Text="Voltar"  />
-                                        <ButtonCreate class="box button-box" Text="Criar o Grupo"  onClick={create}/>
+                                        <ButtonCreate class="box button-box" Text="Criar o Grupo"  onClick={(create)  => [navigate("/events")]} />
                                         </div>
                                         <br></br>
                                         <br></br>

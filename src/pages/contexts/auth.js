@@ -138,10 +138,27 @@ export const AuthProvider = ({ children }) => {
 
         };
 
+    const createEvent = ( data, nomeRota, inicioRota, fimRota, tempo ) => {
+            const eventStorage = JSON.parse(localStorage.getItem("event_db"));
+            const id =  1;
+
+
+            let newEvent;
+
+            if(eventStorage) {
+                   newEvent = [...eventStorage, { data, nomeRota, inicioRota, fimRota, tempo , id }];
+            } else {
+                newEvent = [{data, nomeRota, inicioRota, fimRota, tempo,  id }]
+            }
+
+            localStorage.setItem("event_db", JSON.stringify(newEvent));
+                    return "Evento criado com sucesso!";
+
+            };
 
     return (
         <AuthContext.Provider
-            value={{ user, signed: !!user, signin, signup, signout, subscribe, createGroup }}
+            value={{ user, signed: !!user, signin, signup, signout, subscribe, createGroup , createEvent}}
         >
             {children}
         </AuthContext.Provider>

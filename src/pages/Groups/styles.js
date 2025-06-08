@@ -55,7 +55,7 @@ export const Content = styled.div`
     }
 
     .button {
-        transform: translate(500%, -500%);
+        transform: translate(500%,-150%);
 
     }
 

@@ -58,7 +58,7 @@ import useAuth from "../../hooks/useAuth";
                             <C.ContainerText2>
                                  <div class = "container">
                                      <div class = "box text-box">
-                                        <C.Title>Crie seu Evento</C.Title>
+                                        <C.Title>Crie seu próximo Evento</C.Title>
                                          <br></br>
                                          <br></br>
                                          <br></br>
