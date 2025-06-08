@@ -5,7 +5,7 @@ import HomeUser from "../pages/HomeUser";
 import Groups from "../pages/Groups";
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
-import Maps from "../pages/Maps"
+import Events from "../pages/Events"
 import PedalFofo from "../pages/PedalFofo";
 import CreateGroup from "../pages/CreateGroup";
 import useAuth from "../hooks/useAuth";
@@ -29,7 +29,7 @@ const RoutesApp = () => {
                     <Route path="/" element={<Signin />} />
                     <Route exact path="/signup" element={<Signup />} />
                     <Route path="*" element={<Signin />} />
-                    <Route exact path="/maps" element={<Private Item={Maps} />} />
+                    <Route exact path="/events" element={<Private Item={Events} />} />
                 </Routes>
             </Fragment>
         </BrowserRouter>

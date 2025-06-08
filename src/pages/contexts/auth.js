@@ -109,11 +109,14 @@ export const AuthProvider = ({ children }) => {
 
     };
 
-    const createGroup = (  nome, cidade, descrição, imagem ) => {
-
+    const createGroup = ( email, nome, cidade, descrição, imagem ) => {
         const groupStorage = JSON.parse(localStorage.getItem("group_db"));
-        const imagemInput = document.getElementById('imagem');
 
+        const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
+        const hasUser = usersStorage?.filter((user) => user.email !== email);
+        if (hasUser[0].email === email) {
+            return "Email não é cadastrado no site";
+        }
 
         const id = groupStorage.length > 0 ? Math.max(...groupStorage.map(sub => sub.id)) + 1 : 1;
 
@@ -125,18 +128,15 @@ export const AuthProvider = ({ children }) => {
         let newGroup;
 
         if(groupStorage) {
-               newGroup = [...groupStorage, { nome, cidade, descrição, imagem , id }];
+               newGroup = [...groupStorage, { email, nome, cidade, descrição, imagem , id }];
         } else {
-            newGroup = [{nome, cidade, descrição, imagem,  id }]
+            newGroup = [{email, nome, cidade, descrição, imagem,  id }]
         }
 
         localStorage.setItem("group_db", JSON.stringify(newGroup));
                 return "Você criou seu grupo, parabéns!";
 
         };
-
-
-
 
 
     return (

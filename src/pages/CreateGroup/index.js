@@ -19,6 +19,7 @@ const CreateGroup = () => {
     const navigate = useNavigate();
     const { signout } = useAuth();
 
+    const [ email, setEmail ] = useState("");
     const [ nome, setNome ] = useState("");
     const [ cidade, setCidade ] = useState("");
     const [ descrição, setDescrição ] = useState("");
@@ -26,12 +27,12 @@ const CreateGroup = () => {
     const [error, setError] = useState("");
 
     const create = () => {
-            if (!nome | !cidade | ! descrição | !imagem ) {
+            if (!email | !nome | !cidade | ! descrição | !imagem ) {
             setError("Complete sua inscrição");
                 return;
             }
 
-            const res = createGroup(nome, cidade, descrição, imagem);
+            const res = createGroup(email, nome, cidade, descrição, imagem);
 
             if(res) {
                 setError(res);
@@ -59,6 +60,14 @@ const CreateGroup = () => {
                                         <br></br>
                                         <br></br>
                                         <br></br>
+                                    <Input
+                                        type="email"
+                                        placeholder="Digite o seu email"
+                                        value={email}
+                                        onChange={(e) => [setEmail(e.target.value), setError("")]}
+                                    />
+                                    <br></br>
+                                    <br></br>
 
                                     <Input
                                         type="nome"
