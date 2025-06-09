@@ -140,7 +140,7 @@ export const AuthProvider = ({ children }) => {
 
     const createEvent = ( data, nomeRota, inicioRota, fimRota, tempo ) => {
             const eventStorage = JSON.parse(localStorage.getItem("event_db"));
-            const id =  1;
+            const id = eventStorage.length > 0 ? Math.max(...eventStorage.map(sub => sub.id)) + 1 : 1;
 
 
             let newEvent;
